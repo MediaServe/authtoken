@@ -1,0 +1,24 @@
+Template: authtoken/disable-gnome-keyring-ssh
+Type: boolean
+Default: true
+Description: Disable the Gnome Keyring SSH agent?
+
+Template: authtoken/autodetect-tokens
+Type: boolean
+Default: true
+Description: Would you like to autodetect your token?
+
+Template: authtoken/autodetect-failure
+Type: text
+Description: No authentication tokens were automatically detected.
+
+Template: authtoken/autodetect-success
+Type: text
+Description: Authentication token was successfully configured.
+
+Template: authtoken/autodetect-selection
+Type: select
+Choices: ${choices}
+Default: ${default}
+Description: Multiple authentication tokens were automatically detected.
+ Please select the authentication token you would like to use.

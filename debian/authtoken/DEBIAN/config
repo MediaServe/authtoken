@@ -1,0 +1,47 @@
+#!/bin/bash
+set -e
+. /usr/share/debconf/confmodule
+
+# Disable the Gnome Keyring SSH agent?
+db_input critical authtoken/disable-gnome-keyring-ssh || true
+db_go
+
+# Would you like to autodetect your token?
+db_input high authtoken/autodetect-tokens || true
+db_go
+
+db_get authtoken/autodetect-tokens
+if [ "${RET}" = "true" ]; then
+	# Autodetect authentication token
+	echo "Starting autodetection for authentication tokens"
+	tokens=`grep 'Vendor=096e' /sys/kernel/debug/usb/devices | grep -e '^P:' | sed 's/.*Vendor=\([0-9a-f]\{4\}\) ProdID=\([0-9a-f]\{4\}\) Rev=\([0-9 .]\{4\}\)/\1\/\2\/\3/' | sed 's/[ .]//g' | sed 's/\/0/\//g' | sed 's/^0//'`
+
+	if [ `echo ${tokens} | wc -w` -eq 0 ]; then
+		# No authentication tokens were automatically detected
+		echo "No authentication tokens were automatically detected"
+		db_input high authtoken/autodetect-failure || true
+		db_go
+	elif [ `echo ${tokens} | wc -w` -eq 1 ]; then
+		# Single authentication token was automatically detected
+		echo "Single authentication token was automatically detected: ${tokens}"
+		echo "TOKEN=\"${tokens}\"" > /etc/authtoken/token.conf
+		db_input high authtoken/autodetect-success || true
+		db_go
+	elif [ `echo ${tokens} | wc -w` -gt 1 ]; then
+		# Multiple authentication tokens were automatically detected
+		echo "Multiple authentication tokens were automatically detected"
+		choices=`echo ${tokens} | sed 's/ /, /g'`
+		db_subst authtoken/autodetect-selection choices ${choices}
+		default=`echo ${tokens} | sed 's/^\(.*\) \(.*\)$/\1/'`
+		db_subst authtoken/autodetect-selection default ${default}
+		db_input high authtoken/autodetect-selection || true
+		db_go
+		db_get authtoken/autodetect-selection
+		echo "TOKEN=\"${RET}\"" > /etc/authtoken/token.conf
+		echo "Authentication token was selected: ${RET}"
+	fi
+else
+	echo "Not detecting authentication tokens"
+fi
+
+exit 0

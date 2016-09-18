@@ -1,0 +1,51 @@
+ dpkg-buildpackage -rfakeroot -D -us -uc -i -b
+dpkg-buildpackage: warning: using a gain-root-command while being root
+dpkg-buildpackage: source package authtoken
+dpkg-buildpackage: source version 0.2.1
+dpkg-buildpackage: source distribution xenial
+dpkg-buildpackage: source changed by Thomas Lobker <thomas@mediaserve.nl>
+ dpkg-source -i --before-build authtoken
+dpkg-buildpackage: host architecture amd64
+ fakeroot debian/rules clean
+dh clean 
+   dh_testdir
+   dh_auto_clean
+   dh_clean
+ debian/rules build
+dh build 
+   dh_testdir
+   dh_update_autotools_config
+   dh_auto_configure
+   dh_auto_build
+   dh_auto_test
+ fakeroot debian/rules binary
+dh binary 
+   dh_testroot
+   dh_prep
+   dh_installdirs
+   dh_auto_install
+   dh_install
+   dh_installdocs
+   dh_installchangelogs
+   dh_installman
+   dh_installdebconf
+   dh_perl
+   dh_link
+   dh_strip_nondeterminism
+   dh_compress
+   dh_fixperms
+   dh_strip
+   dh_makeshlibs
+   dh_shlibdeps
+   dh_installdeb
+   dh_gencontrol
+   dh_md5sums
+   dh_builddeb
+dpkg-deb: building package 'authtoken' in '../authtoken_0.2.1_amd64.deb'.
+ dpkg-genchanges -b >../authtoken_0.2.1_amd64.changes
+dpkg-genchanges: binary-only upload (no source code included)
+ dpkg-source -i --after-build authtoken
+dpkg-buildpackage: binary-only upload (no source included)
+Now running lintian...
+warning: the authors of lintian do not recommend running it with root privileges!
+Finished running lintian.

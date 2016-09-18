@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Authentication Token
+Comment=Authentication Token
+Exec=/usr/bin/authtoken init
+OnlyShowIn=GNOME;Unity;MATE;
+X-GNOME-Autostart-Phase=Initialization
+X-GNOME-AutoRestart=false
+X-GNOME-Autostart-Notify=true
+NoDisplay=true
+X-Ubuntu-Gettext-Domain=authtoken

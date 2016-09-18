@@ -1,0 +1,24 @@
+Format: 1.8
+Date: Sun, 18 Sep 2016 13:46:40 +0200
+Source: authtoken
+Binary: authtoken
+Architecture: amd64
+Version: 0.2.1
+Distribution: xenial
+Urgency: medium
+Maintainer: Thomas Lobker <thomas@mediaserve.nl>
+Changed-By: Thomas Lobker <thomas@mediaserve.nl>
+Description:
+ authtoken  - Authentication interface for USB PKI tokens
+Changes:
+ authtoken (0.2.1) xenial; urgency=medium
+ .
+   * Auto detect tokens with installation
+   * Check if token is present during initialization
+   * Various minor fixes and improvements
+Checksums-Sha1:
+ e1e267c8110ca8e6d20795022340f0e225be31ed 5248 authtoken_0.2.1_amd64.deb
+Checksums-Sha256:
+ 875b0252fdd57cef6d149e5d36220bf4c15352d4d2a8d312d7654310c5cdd44c 5248 authtoken_0.2.1_amd64.deb
+Files:
+ 066f6b8d07da70c72233ad726b473ed9 5248 utils optional authtoken_0.2.1_amd64.deb

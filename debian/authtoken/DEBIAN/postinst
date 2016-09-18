@@ -1,0 +1,35 @@
+#!/bin/bash
+set -e
+. /usr/share/debconf/confmodule
+db_get authtoken/disable-gnome-keyring-ssh
+
+if [ "$RET" = "true" ]; then
+	if [ -e "/etc/xdg/autostart/gnome-keyring-ssh.desktop" ]; then
+		md5=`md5sum /etc/xdg/autostart/gnome-keyring-ssh.desktop | awk '{ print $1 }'`
+		if [ "${md5}" == "422e383159f4991aa305bf305af8b325" ]; then
+			TMPFILE=`mktemp`
+			cat >> ${TMPFILE} << EOF
+@@ -11,4 +11,5 @@
+ X-GNOME-Bugzilla-Product=gnome-keyring
+ X-GNOME-Bugzilla-Component=general
+ X-GNOME-Bugzilla-Version=3.18.3
++X-GNOME-Autostart-enabled=false
+ X-Ubuntu-Gettext-Domain=gnome-keyring
+EOF
+			patch /etc/xdg/autostart/gnome-keyring-ssh.desktop < ${TMPFILE} > /dev/null
+			rm "${TMPFILE}"
+		else
+			echo "Unable to disable the Gnome Keyring SSH agent"
+			echo "Gnome Keyring SSH agent desktop file is not default"
+		fi
+	else
+		echo "Gnome Keyring SSH agent desktop file not found"
+	fi
+fi
+
+echo "Restart your session to start authtoken or run authtoken init from the command line"
+
+
+
+db_stop
+exit 0

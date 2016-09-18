@@ -1,0 +1,66 @@
+#!/bin/bash
+if [[ $EUID -eq 0 ]]; then
+	echo "You cannot run authtoken as root" 1>&2
+	exit 1
+else
+	if [ -e /etc/authtoken/token.conf ]; then
+		. /etc/authtoken/token.conf
+
+		if [ "$1" = "init" ]; then
+			(/usr/bin/authtoken &) &
+			exit 0
+		else
+			monitor_udev_events() {
+				grep --line-buffered -m1 -A4 -B21 "PRODUCT=${TOKEN}" <(stdbuf -i0 -o0 udevadm monitor --property --udev --subsystem-match=usb/usb_device)
+			}
+			trigger_token() {
+				while read LINE <&5 ; do
+					KEY=`echo ${LINE} | sed 's/\(.*\)=\(.*\)/\1/'`
+					VALUE=`echo ${LINE} | sed 's/\(.*\)=\(.*\)/\2/'`
+					if [ "${KEY}" = "ACTION" ]; then
+						ACTION=${VALUE}
+					fi
+				done
+				if [ "${ACTION}" = "add" ]; then
+					add_token
+				elif [ "${ACTION}" = "remove" ]; then
+					remove_token
+				fi
+			}
+			add_token() {
+				result=$( SSH_ASKPASS="/usr/bin/askpass" /usr/bin/ssh-add -s /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so < /dev/null 2>&1 )
+				if [ $? -gt 0 ]; then
+					/usr/bin/notify-send -t 1000 --hint=int:transient:1 "Authentication token could not be added" -i /usr/share/icons/gnome/scalable/status/dialog-error-symbolic.svg
+				else
+					/usr/bin/notify-send -t 1000 --hint=int:transient:1 "Authentication token added successfully" -i /usr/share/icons/gnome/scalable/status/security-high-symbolic.svg
+				fi
+			}
+			remove_token() {
+				result=$( SSH_ASKPASS="/bin/echo" /usr/bin/ssh-add -e /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so < /dev/null 2>&1 )
+				if [[ $? -eq 0 && "${result:0:17}" != "SSH_AGENT_FAILURE" ]]; then
+					/usr/bin/notify-send -t 1000 --hint=int:transient:1 "Authentication token removed" -i /usr/share/icons/gnome/scalable/status/security-low-symbolic.svg
+				else
+					/usr/bin/notify-send -t 1000 --hint=int:transient:1 "Authentication token could not be removed" -i /usr/share/icons/gnome/scalable/status/dialog-error-symbolic.svg
+				fi
+			}
+			# Check if the token is already inserted
+			DEVICEID=`echo ${TOKEN} | sed 's/\([0-9a-f]\{1,4\}\)\/\([0-9a-f]\{1,4\}\)\/\([0-9a-f]\{1,4\}\)/\1:\2/'`
+			REVISION=`echo ${TOKEN} | sed 's/\([0-9a-f]\{1,4\}\)\/\([0-9a-f]\{1,4\}\)\/\([0-9a-f]\{1,4\}\)/\3/'`
+			DETECTED=`lsusb -d "${DEVICEID}" -v 2> /dev/null | grep bcdDevice | sed 's/.* \([0-9\.]*\)$/\1/g' | sed 's/\.//g' | grep ${REVISION} | wc -l`
+			if [ ${DETECTED} -gt 0 ]; then
+				add_token
+			fi
+			while true
+			do
+				exec 5< <( monitor_udev_events )
+				exec 6< <( trigger_token )
+				while read LINE <&6 ; do
+					echo "${LINE}"
+				done
+			done
+		fi
+	else
+		echo "Configuration file /etc/authtoken/token.conf not found"
+		exit 1
+	fi
+fi
