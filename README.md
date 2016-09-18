@@ -1,2 +1,37 @@
 # authtoken
-authtoken is a small tool that provides an interface to load the PKCS driver for an SSH agent
+`authtoken` is a small tool that provides an interface to load the PKCS driver for an SSH agent.
+
+This small application helps you to easily add and remove a [Feitian](http://www.ftsafe.com/) authentication token to your
+SSH agent on a Ubuntu workstation, like the [Feitian ePass2003](http://www.ftsafe.com/products/PKI/Standard).
+
+It works by defining a hardware device and revision in the configuration and start the
+application in your user session. It runs in the background. The application scans the hardware
+bus for any changes. When it detects that the configured device is added or removed, it will add
+or remove a PKCS11 library from the SSH agent. It presents a nice prompt in the user interface
+for your password and it gives you a graphical notification when something happens.
+
+## Support
+It has been made for **Ubuntu 16.04 LTS** and **Feitian ePass2003** authentication tokens, but it should
+work on other systems as well, maybe with some custom tweaking.
+
+## Installation
+Install the provided Debian package, or build it yourself.
+
+```bash
+debuild -i -us -uc -b
+sudo dpkg -i ../authtoken_0.2.1_amd64.deb
+```
+
+It will ask you if you want to disable the Gnome Keyring SSH agent, which you probably should because it
+is not compatible with the PKCS11 library. It will also ask you if you want to autodetect the token. Make
+sure you have the token inserted in your workstation before you continue.
+
+### Configuration
+During the installation of the package it will try to scan the hardware bus for any Feitian tokens. If
+multiple tokens are found, you can select the token that you want to use. You may always reconfigure
+using `dpkg-reconfigure authtoken` or just change the configuration file `/etc/authtoken/token.conf` manually.
+
+## Conclusion
+Enjoy and let me know if you have some questions or issues.
+
+Thomas Lobker
