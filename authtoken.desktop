@@ -2,7 +2,7 @@
 Type=Application
 Name=Authentication Token
 Comment=Authentication Token
-Exec=/usr/bin/authtoken init
+Exec=/usr/bin/authtoken
 OnlyShowIn=GNOME;Unity;MATE;
 X-GNOME-Autostart-Phase=Initialization
 X-GNOME-AutoRestart=false
