@@ -1,3 +1,12 @@
+authtoken (0.2.2) xenial; urgency=medium
+
+  * Kill previous sessions at startup
+  * Fix missing Ubuntu icons
+  * Allow password through stdin
+  * Fix minor syntax bugs
+
+ -- Thomas Lobker <thomas@mediaserve.nl>  Sat, 24 Mar 2018 14:48:19 +0100
+
 authtoken (0.2.1) xenial; urgency=medium
 
   * Auto detect tokens with installation
