@@ -1,0 +1,25 @@
+Format: 1.8
+Date: Sat, 24 Mar 2018 14:48:19 +0100
+Source: authtoken
+Binary: authtoken
+Architecture: amd64
+Version: 0.2.2
+Distribution: xenial
+Urgency: medium
+Maintainer: Thomas Lobker <thomas@mediaserve.nl>
+Changed-By: Thomas Lobker <thomas@mediaserve.nl>
+Description:
+ authtoken  - Authentication interface for USB PKI tokens
+Changes:
+ authtoken (0.2.2) xenial; urgency=medium
+ .
+   * Kill previous sessions at startup
+   * Fix missing Ubuntu icons
+   * Allow password through stdin
+   * Fix minor syntax bugs
+Checksums-Sha1:
+ 1e05f376e78663522ec56d6f3b345407470ab215 5488 authtoken_0.2.2_amd64.deb
+Checksums-Sha256:
+ afacdc9898cbb93b4c5365e7fee48a6a37b5b0bf6aa54ba070adeb401fee2ff1 5488 authtoken_0.2.2_amd64.deb
+Files:
+ 40f20ae1d8ef7552f5d91bc252604432 5488 utils optional authtoken_0.2.2_amd64.deb
