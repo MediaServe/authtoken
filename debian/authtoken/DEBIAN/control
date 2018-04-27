@@ -1,10 +1,10 @@
 Package: authtoken
-Version: 0.3.0
+Version: 0.3.1
 Architecture: amd64
 Maintainer: Thomas Lobker <thomas@mediaserve.nl>
 Installed-Size: 31
 Pre-Depends: debconf (>= 0.5) | debconf-2.0
-Depends: pcscd (>= 1.8.10), pcsc-tools (>= 1.4.22), opensc (>= 0.13.0), libengine-pkcs11-openssl (>= 0.1.8), expect
+Depends: pcscd (>= 1.8.10), pcsc-tools (>= 1.4.22), opensc (>= 0.13.0), opensc (<< 0.17.0), libengine-pkcs11-openssl (>= 0.1.8), expect
 Conflicts: libmtp-runtime
 Section: utils
 Priority: optional

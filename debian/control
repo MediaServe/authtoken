@@ -8,7 +8,7 @@ Standards-Version: 3.9.5
 Package: authtoken
 Architecture: amd64
 Pre-Depends: ${misc:Depends}
-Depends: pcscd (>= 1.8.10), pcsc-tools (>= 1.4.22), opensc (>= 0.13.0), libengine-pkcs11-openssl (>= 0.1.8), expect
+Depends: pcscd (>= 1.8.10), pcsc-tools (>= 1.4.22), opensc (>= 0.13.0), opensc (<< 0.17.0), libengine-pkcs11-openssl (>= 0.1.8), expect
 Conflicts: libmtp-runtime
 Description: Authentication interface for USB PKI tokens
  authtoken is a small tool that provides an interface

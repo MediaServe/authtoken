@@ -1,3 +1,9 @@
+authtoken (0.3.1) bionic; urgency=medium
+
+  * Require legacy OpenSC because 0.17.0 has a bug
+
+ -- Thomas Lobker <thomas@mediaserve.nl>  Sat, 28 Apr 2018 00:43:34 +0200
+
 authtoken (0.3.0) bionic; urgency=medium
 
   * First release for Ubuntu 18.04 LTS

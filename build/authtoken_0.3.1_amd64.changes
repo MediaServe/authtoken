@@ -1,0 +1,22 @@
+Format: 1.8
+Date: Sat, 28 Apr 2018 00:43:34 +0200
+Source: authtoken
+Binary: authtoken
+Architecture: amd64
+Version: 0.3.1
+Distribution: bionic
+Urgency: medium
+Maintainer: Thomas Lobker <thomas@mediaserve.nl>
+Changed-By: Thomas Lobker <thomas@mediaserve.nl>
+Description:
+ authtoken  - Authentication interface for USB PKI tokens
+Changes:
+ authtoken (0.3.1) bionic; urgency=medium
+ .
+   * Require legacy OpenSC because 0.17.0 has a bug
+Checksums-Sha1:
+ 88492319fdfd066d903a49782612dd604f67b3c9 5596 authtoken_0.3.1_amd64.deb
+Checksums-Sha256:
+ efe546e8e207e2c0961b44a74179dc4272786ad00a5be67a25185de46c4c91bc 5596 authtoken_0.3.1_amd64.deb
+Files:
+ 0ceb0cefa505e6ca52d8d01530551e23 5596 utils optional authtoken_0.3.1_amd64.deb
