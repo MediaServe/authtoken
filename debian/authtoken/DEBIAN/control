@@ -1,5 +1,5 @@
 Package: authtoken
-Version: 0.2.2
+Version: 0.3.0
 Architecture: amd64
 Maintainer: Thomas Lobker <thomas@mediaserve.nl>
 Installed-Size: 31

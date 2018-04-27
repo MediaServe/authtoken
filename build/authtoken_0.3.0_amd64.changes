@@ -1,0 +1,22 @@
+Format: 1.8
+Date: Fri, 27 Apr 2018 23:52:13 +0200
+Source: authtoken
+Binary: authtoken
+Architecture: amd64
+Version: 0.3.0
+Distribution: bionic
+Urgency: medium
+Maintainer: Thomas Lobker <thomas@mediaserve.nl>
+Changed-By: Thomas Lobker <thomas@mediaserve.nl>
+Description:
+ authtoken  - Authentication interface for USB PKI tokens
+Changes:
+ authtoken (0.3.0) bionic; urgency=medium
+ .
+   * First release for Ubuntu 18.04 LTS
+Checksums-Sha1:
+ 4f284476c1a437e56fa64454b1fa7e0adf45bf54 5534 authtoken_0.3.0_amd64.deb
+Checksums-Sha256:
+ a081abc3c6d53f3627dbed58f05c6f365ad2462d81908a357429235ca91a9cf1 5534 authtoken_0.3.0_amd64.deb
+Files:
+ 61f2e814ba8a99e32543f1cc0f3c559b 5534 utils optional authtoken_0.3.0_amd64.deb
