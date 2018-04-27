@@ -1,3 +1,9 @@
+authtoken (0.3.0) bionic; urgency=medium
+
+  * First release for Ubuntu 18.04 LTS
+
+ -- Thomas Lobker <thomas@mediaserve.nl>  Fri, 27 Apr 2018 23:52:13 +0200
+
 authtoken (0.2.2) xenial; urgency=medium
 
   * Kill previous sessions at startup

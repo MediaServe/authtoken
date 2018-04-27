@@ -6,13 +6,13 @@ db_get authtoken/disable-gnome-keyring-ssh
 if [ "$RET" = "true" ]; then
 	if [ -e "/etc/xdg/autostart/gnome-keyring-ssh.desktop" ]; then
 		md5=`md5sum /etc/xdg/autostart/gnome-keyring-ssh.desktop | awk '{ print $1 }'`
-		if [ "${md5}" == "422e383159f4991aa305bf305af8b325" ]; then
+		if [ "${md5}" == "d5b2dabb0c8b41a7119bf1cc131934df" ]; then
 			TMPFILE=`mktemp`
 			cat >> ${TMPFILE} << EOF
 @@ -11,4 +11,5 @@
  X-GNOME-Bugzilla-Product=gnome-keyring
  X-GNOME-Bugzilla-Component=general
- X-GNOME-Bugzilla-Version=3.18.3
+ X-GNOME-Bugzilla-Version=3.28.0.2
 +X-GNOME-Autostart-enabled=false
  X-Ubuntu-Gettext-Domain=gnome-keyring
 EOF
