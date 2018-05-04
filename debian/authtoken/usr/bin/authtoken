@@ -27,6 +27,8 @@ else
 					add_token
 				elif [ "${ACTION}" = "remove" ]; then
 					remove_token
+				elif [ "${ACTION}" = "unbind" ]; then
+					remove_token
 				fi
 			}
 			add_token() {

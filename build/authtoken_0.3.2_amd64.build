@@ -1,0 +1,44 @@
+ dpkg-buildpackage -rfakeroot -us -uc -ui -i -b
+dpkg-buildpackage: info: source package authtoken
+dpkg-buildpackage: info: source version 0.3.2
+dpkg-buildpackage: info: source distribution bionic
+dpkg-buildpackage: info: source changed by Thomas Lobker <thomas@mediaserve.nl>
+ dpkg-source -i --before-build authtoken
+dpkg-buildpackage: info: host architecture amd64
+ fakeroot debian/rules clean
+dh clean 
+   dh_clean
+ debian/rules build
+make: 'build' is up to date.
+ fakeroot debian/rules binary
+dh binary 
+   dh_update_autotools_config
+   dh_testroot
+   dh_prep
+   dh_installdirs
+   dh_install
+   dh_installdocs
+   dh_installchangelogs
+   dh_installman
+   dh_installdebconf
+   dh_perl
+   dh_link
+   dh_strip_nondeterminism
+   dh_compress
+   dh_fixperms
+   dh_missing
+   dh_strip
+   dh_makeshlibs
+   dh_shlibdeps
+   dh_installdeb
+   dh_gencontrol
+   dh_md5sums
+   dh_builddeb
+dpkg-deb: building package 'authtoken' in '../authtoken_0.3.2_amd64.deb'.
+ dpkg-genbuildinfo --build=binary
+ dpkg-genchanges --build=binary >../authtoken_0.3.2_amd64.changes
+dpkg-genchanges: info: binary-only upload (no source code included)
+ dpkg-source -i --after-build authtoken
+dpkg-buildpackage: info: binary-only upload (no source included)
+Now running lintian authtoken_0.3.2_amd64.changes ...
+Finished running lintian.

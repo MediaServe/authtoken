@@ -1,3 +1,9 @@
+authtoken (0.3.2) bionic; urgency=medium
+
+  * Fix undetected token removal in Ubuntu 18.04 LTS
+
+ -- Thomas Lobker <thomas@mediaserve.nl>  Fri, 04 May 2018 13:41:12 +0200
+
 authtoken (0.3.1) bionic; urgency=medium
 
   * Require legacy OpenSC because 0.17.0 has a bug

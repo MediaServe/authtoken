@@ -1,0 +1,25 @@
+Format: 1.8
+Date: Fri, 04 May 2018 13:41:12 +0200
+Source: authtoken
+Binary: authtoken
+Architecture: amd64
+Version: 0.3.2
+Distribution: bionic
+Urgency: medium
+Maintainer: Thomas Lobker <thomas@mediaserve.nl>
+Changed-By: Thomas Lobker <thomas@mediaserve.nl>
+Description:
+ authtoken  - Authentication interface for USB PKI tokens
+Changes:
+ authtoken (0.3.2) bionic; urgency=medium
+ .
+   * Fix undetected token removal in Ubuntu 18.04 LTS
+Checksums-Sha1:
+ cb3cd6ee34a7210e0d97684060b698d7c2f8ac8e 4875 authtoken_0.3.2_amd64.buildinfo
+ caba5e0b769e50e60e51c3c8a58d08637620473d 5668 authtoken_0.3.2_amd64.deb
+Checksums-Sha256:
+ 298d3f13c73c44491e5a6e3df91fbd8cb3dbb8818326ee7a117cf09454cd3106 4875 authtoken_0.3.2_amd64.buildinfo
+ f7c859d05309a2cef077ce92b123288d302df3b96dcc536b49acdd3c04c09362 5668 authtoken_0.3.2_amd64.deb
+Files:
+ a35fb58fb03e87f643734e51e9644641 4875 utils optional authtoken_0.3.2_amd64.buildinfo
+ 9a6d178b5aecddf357bdb0424507eb65 5668 utils optional authtoken_0.3.2_amd64.deb

@@ -1,4 +1,4 @@
-# authtoken 0.3.1
+# authtoken 0.3.2
 `authtoken` is a small tool that provides an interface to load the PKCS driver for an SSH agent.
 
 This small application helps you to easily add and remove a [Feitian](http://www.ftsafe.com/) authentication token to your
@@ -19,7 +19,7 @@ Install the provided Debian package, or build it yourself.
 
 ```bash
 debuild -i -us -uc -b
-sudo apt install ../authtoken_0.3.1_amd64.deb
+sudo apt install ../authtoken_0.3.2_amd64.deb
 ```
 
 It will ask you if you want to disable the Gnome Keyring SSH agent, which you probably should because it
@@ -44,6 +44,10 @@ multiple tokens are found, you can select the token that you want to use. You ma
 using `dpkg-reconfigure authtoken` or just change the configuration file `/etc/authtoken/token.conf` manually.
 
 ### Changelog
+
+# 0.3.2
+
+* Fix bug where unbind USB events are ignored
 
 # 0.3.1
 

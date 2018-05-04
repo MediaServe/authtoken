@@ -1,6 +1,6 @@
 528bb1c7e1e52e4575c7723ebd41fb4c  usr/bin/askpass
-ac7fa86f76033c04ab9106354aaafe17  usr/bin/authtoken
-d31d9432d1ffc816e560a41638f5a534  usr/share/doc/authtoken/changelog.gz
+a3de4f08747c41417bcf689b513f1a7c  usr/bin/authtoken
+14ec2bb56362cddaf825757f98bb4070  usr/share/doc/authtoken/changelog.gz
 a08cdb26d056f0d0fddd02d7d53ad074  usr/share/doc/authtoken/copyright
 539cedff7dd4f050a68c63b0f5d30bb4  usr/share/man/man5/askpass.5.gz
 c0f034e9234b27b4990c438343e86ca1  usr/share/man/man5/authtoken.5.gz
