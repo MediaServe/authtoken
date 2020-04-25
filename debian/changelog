@@ -1,3 +1,9 @@
+authtoken (0.4.0) focal; urgency=medium
+
+  * Release for Ubuntu 20.04 LTS
+
+ -- Thomas Lobker <thomas@mediaserve.nl>  Sat, 25 Apr 2020 14:35:42 +0200
+
 authtoken (0.3.2) bionic; urgency=medium
 
   * Fix undetected token removal in Ubuntu 18.04 LTS

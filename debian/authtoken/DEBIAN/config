@@ -16,6 +16,8 @@ if [ "${RET}" = "true" ]; then
 	echo "Starting autodetection for authentication tokens"
 	tokens=`grep 'Vendor=096e' /sys/kernel/debug/usb/devices | grep -e '^P:' | sed 's/.*Vendor=\([0-9a-f]\{4\}\) ProdID=\([0-9a-f]\{4\}\) Rev=\([0-9 .]\{4\}\)/\1\/\2\/\3/' | sed 's/[ .]//g' | sed 's/\/0/\//g' | sed 's/^0//'`
 
+	mkdir -p /etc/authtoken/
+
 	if [ `echo ${tokens} | wc -w` -eq 0 ]; then
 		# No authentication tokens were automatically detected
 		echo "No authentication tokens were automatically detected"
@@ -42,6 +44,9 @@ if [ "${RET}" = "true" ]; then
 	fi
 else
 	echo "Not detecting authentication tokens"
+	if [ ! -f /etc/authtoken/token.conf ]; then
+		echo "TOKEN=\"96e/807/\"" > /etc/authtoken/token.conf
+	fi
 fi
 
 exit 0

@@ -1,4 +1,4 @@
-# authtoken 0.3.2
+# authtoken 0.4.0
 `authtoken` is a small tool that provides an interface to load the PKCS driver for an SSH agent.
 
 This small application helps you to easily add and remove a [Feitian](http://www.ftsafe.com/) authentication token to your
@@ -11,15 +11,16 @@ or remove a PKCS11 library from the SSH agent. It presents a nice prompt in the 
 for your password and it gives you a graphical notification when something happens.
 
 ## Support
-It has been made for **Ubuntu 18.04 LTS** and **Feitian ePass2003** authentication tokens, but it should
-work on other systems as well, maybe with some custom tweaking.
+It has been made for **Ubuntu 20.04 LTS** and **Feitian ePass2003** authentication tokens, but it should
+work on other systems as well, maybe with some custom tweaking. Create an issue if you have any problems
+with this package and you want to make it work. Or create a pull request if you have any improvements.
 
 ## Installation
 Install the provided Debian package, or build it yourself.
 
 ```bash
 debuild -i -us -uc -b
-sudo apt install ../authtoken_0.3.2_amd64.deb
+sudo apt install ../authtoken_0.4.0_amd64.deb
 ```
 
 It will ask you if you want to disable the Gnome Keyring SSH agent, which you probably should because it
@@ -44,6 +45,12 @@ multiple tokens are found, you can select the token that you want to use. You ma
 using `dpkg-reconfigure authtoken` or just change the configuration file `/etc/authtoken/token.conf` manually.
 
 ### Changelog
+
+# 0.4.0
+
+* Build for Ubuntu 20.04 LTS
+* Updated for Gnome version 3.36.0
+* Improve package dependencies
 
 # 0.3.2
 

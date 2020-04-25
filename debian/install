@@ -1,4 +1,3 @@
 authtoken usr/bin
 askpass usr/bin
 authtoken.desktop etc/xdg/autostart
-token.conf etc/authtoken

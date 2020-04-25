@@ -1,0 +1,59 @@
+ dpkg-buildpackage -us -uc -ui -i
+dpkg-buildpackage: info: source package authtoken
+dpkg-buildpackage: info: source version 0.4.0
+dpkg-buildpackage: info: source distribution focal
+dpkg-buildpackage: info: source changed by Thomas Lobker <thomas@mediaserve.nl>
+ dpkg-source -i --before-build .
+dpkg-buildpackage: info: host architecture amd64
+ debian/rules clean
+dh clean 
+   dh_clean
+ dpkg-source -i -b .
+dpkg-source: warning: source directory 'authtoken' is not <sourcepackage>-<upstreamversion> 'authtoken-0.4.0'
+dpkg-source: info: using source format '1.0'
+dpkg-source: info: building authtoken in authtoken_0.4.0.tar.gz
+dpkg-source: info: building authtoken in authtoken_0.4.0.dsc
+ debian/rules build
+make: 'build' is up to date.
+ debian/rules binary
+dh binary 
+   dh_update_autotools_config
+   dh_testroot
+   dh_prep
+   dh_installdirs
+   dh_install
+   dh_installdocs
+   dh_installchangelogs
+   dh_installman
+   dh_installdebconf
+   dh_perl
+   dh_link
+   dh_strip_nondeterminism
+   dh_compress
+   dh_fixperms
+   dh_missing
+   dh_strip
+   dh_makeshlibs
+   dh_shlibdeps
+   dh_installdeb
+   dh_gencontrol
+   dh_md5sums
+   dh_builddeb
+dpkg-deb: building package 'authtoken' in '../authtoken_0.4.0_amd64.deb'.
+ dpkg-genbuildinfo
+ dpkg-genchanges  >../authtoken_0.4.0_amd64.changes
+dpkg-genchanges: info: including full source code in upload
+ dpkg-source -i --after-build .
+dpkg-buildpackage: info: full upload; Debian-native package (full source is included)
+Now running lintian authtoken_0.4.0_amd64.changes ...
+warning: the authors of lintian do not recommend running it with root privileges!
+E: authtoken source: not-using-po-debconf
+E: authtoken source: untranslatable-debconf-templates templates: 13
+E: authtoken source: untranslatable-debconf-templates templates: 17
+E: authtoken source: untranslatable-debconf-templates templates: 23
+E: authtoken source: untranslatable-debconf-templates templates: 4
+E: authtoken source: untranslatable-debconf-templates templates: 9
+W: authtoken source: ancient-standards-version 3.9.5 (released 2013-10-28) (current is 4.5.0)
+W: authtoken source: diff-contains-git-control-dir .git
+W: authtoken source: package-uses-deprecated-debhelper-compat-version 9
+Finished running lintian.
